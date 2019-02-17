@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: nsp
+  name: p4p-helix
+  labels:
+    app: p4p-helix
+spec:
+  type: NodePort
+  ports:
+    - port: 1666
+      targetPort: 1666
+  selector:
+    app: p4p-helix
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: nsp
+  name: p4p-helix
+  labels:
+    app: p4p-helix
+spec:
+  template:
+    metadata:
+      labels:
+        app: p4p-helix
+    spec:
+      containers:
+      - image: khawarhere/helix-docker_p4p.helix
+        name: p4p-helix
+        env:
+          - name: P4TARGET
+            value: "192.168.99.100:31471" // 192.168.183.100
+          - name: P4PORT
+            value: "1666"
+          - name: P4CACHE
+            value: "/cache"
+        ports:
+        - containerPort: 1666
+        volumeMounts:
+        - mountPath: /cache
+          name: pvc-helix-p4p
+        tty: true
+      restartPolicy: Always
+      volumes:
+      - name: pvc-helix-p4p
+        persistentVolumeClaim:
+          claimName: pvc-helix-p4p

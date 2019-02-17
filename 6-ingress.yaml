@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: nsp
+  name: ingressp
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: ingressp
+spec:
+  backend:
+    serviceName: swarm-helix
+    servicePort: 80
+  rules:
+    - host: perforce.local
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: swarm-helix
+            servicePort: 80

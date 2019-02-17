@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: nsp
+  name: build-helix
+  labels:
+    app: build-helix
+spec:
+  type: NodePort
+  ports:
+    - port: 1666
+      targetPort: 3306
+  selector:
+    app: build-helix
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: nsp
+  name: build-helix
+  labels:
+    app: build-helix
+spec:
+  template:
+    metadata:
+      labels:
+        app: build-helix
+    spec:
+      containers:
+      - image: khawarhere/helix-docker_build.helix
+        name: build-helix
+        env:
+          - name: P4PORT
+            value: p4d-helix
+        ports:
+        - containerPort: 1666
+        volumeMounts:
+        - mountPath: /p4
+          name: pvc-helix-p4d
+        tty: true
+      restartPolicy: Always
+      volumes:
+      - name: pvc-helix-p4d
+        persistentVolumeClaim:
+          claimName: pvc-helix-p4d
