@@ -1,9 +1,11 @@
-export DOCKER_IMAGE="helix-docker_swarm.helix"
-export DOCKER_IMAGE="helix-docker_build.helix"
-export DOCKER_IMAGE="helix-docker_p4d.helix"
-export DOCKER_IMAGE="helix-docker_p4p.helix"
+# Install Helix P4C service in Kubernetes.
 
-export DOCKER_ID_USER="khawarhere"
+* clone the repo
 
-docker tag $DOCKER_IMAGE $DOCKER_ID_USER/$DOCKER_IMAGE
-docker push $DOCKER_ID_USER/$DOCKER_IMAGE
+```
+git clone git@github.com:khawarhere/helix-kubernetes.git
+
+```
+
+* cd into root folder
+
