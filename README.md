@@ -32,7 +32,11 @@ Congratulation, your P4P service is running inside kubernetes:
 # View installed services
 
 Now we have to note on which port our service is running
+* Local minikube will running on 192.168.99.100
 
 ```
-kubectl get svc
+kubectl get svc -n nsp
 ```
+
+You will see your serivce in list of services, note the value in column PORT(S) after : is your exposed port.
+

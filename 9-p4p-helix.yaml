@@ -31,7 +31,7 @@ spec:
         name: p4p-helix
         env:
           - name: P4TARGET
-            value: "192.168.99.100:31471" // 192.168.183.100
+            value: "192.168.99.100:31471"
           - name: P4PORT
             value: "1666"
           - name: P4CACHE
