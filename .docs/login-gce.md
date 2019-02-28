@@ -2,7 +2,7 @@
 ```
 gcloud auth activate-service-account \
   devops@cobalt-poet-231218.iam.gserviceaccount.com \
- --key-file=/opt/develop/creds/cobalt-poet-231218/key.json \
+ --key-file=/../../creds/cobalt-poet-231218/key.json \
  --project=cobalt-poet-231218
   ```
  

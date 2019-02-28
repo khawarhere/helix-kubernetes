@@ -14,3 +14,4 @@ gcloud compute firewall-rules create minikube-dashboard --allow tcp:8001
 ssh -R 8001:127.0.0.1:8001 khawar@34.73.36.181
 ```
 
+https://www.digitalocean.com/community/tutorials/how-to-install-software-on-kubernetes-clusters-with-the-helm-package-manager
