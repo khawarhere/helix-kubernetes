@@ -3,8 +3,7 @@
 * Clone the repo
 
 ```
-git clone git@github.com:khawarhere/helix-kubernetes.git
-
+git clone git@github.com:scaleablecloud/kubernetes-helix.git
 ```
 
 * Cd into root folder
